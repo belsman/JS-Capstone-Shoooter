@@ -177,7 +177,6 @@ export default class MainScene extends Phaser.Scene {
             }
 
             if (this.keySpace.isDown) {
-                console.log('This is pressed!');
                 this.player.setData("isShooting", true);
             } else {
                 this.player.setData("timerShootTick", this.player.getData("timerShootDelay") - 1);
