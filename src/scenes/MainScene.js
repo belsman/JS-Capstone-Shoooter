@@ -84,9 +84,7 @@ export default class MainScene extends Phaser.Scene {
             this.player.setData("isShooting", false);
         }
 
-        for (var i = 0; i < this.enemies.getChildren().length; i++) {
-            var enemy = this.enemies.getChildren()[i];
-      
+        for (const enemy of this.enemies.getChildren()) {
             enemy.update();
 
             if (enemy.x < -enemy.displayWidth ||
@@ -105,8 +103,7 @@ export default class MainScene extends Phaser.Scene {
             }
         }
 
-        for (var i = 0; i < this.enemyLasers.getChildren().length; i++) {
-            var laser = this.enemyLasers.getChildren()[i];
+        for (const laser of this.enemyLasers.getChildren()) {
             laser.update();
       
             if (laser.x < -laser.displayWidth ||
@@ -119,8 +116,7 @@ export default class MainScene extends Phaser.Scene {
             }
         }
       
-        for (var i = 0; i < this.playerLasers.getChildren().length; i++) {
-            var laser = this.playerLasers.getChildren()[i];
+        for (const laser of this.playerLasers.getChildren()) {
             laser.update();
       
             if (laser.x < -laser.displayWidth ||
