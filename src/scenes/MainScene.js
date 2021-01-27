@@ -6,6 +6,9 @@ import enemyShipImg from '../assets/enemy.png';
 import enemyLaserImg from '../assets/sprLaserEnemy0.png';
 import Player from '../entities/Player';
 import EnemyShip from '../entities/Enemy';
+import laserSoundEffect from '../assets/sndLaser.wav';
+import explosion from '../assets/sndExplode0.wav';
+import explosion1 from '../assets/sndExplode1.wav'
 
 import blastImg1 from '../assets/Ship1_Explosion_001.png';
 import blastImg2 from '../assets/Ship1_Explosion_003.png';
@@ -43,6 +46,9 @@ export default class MainScene extends Phaser.Scene {
         this.load.image('blast8', blastImg9);
         this.load.image('blast9', blastImg10);
 
+        this.load.audio("laserSound", laserSoundEffect);
+        this.load.audio("explosion", explosion);
+        this.load.audio("explosion1", explosion1);
     }
     
     create() {
@@ -53,6 +59,14 @@ export default class MainScene extends Phaser.Scene {
             this.game.config.height * 0.5,
             'player-ship'
         );
+
+        this.sfx = {
+            explosions: [
+              this.sound.add("explosion"),
+              this.sound.add("explosion1")
+            ],
+            laser: this.sound.add("laserSound")
+        };
 
         this.playerLasers = this.add.group();
         this.enemies = this.add.group();
