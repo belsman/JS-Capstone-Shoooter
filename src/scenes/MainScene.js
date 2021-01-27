@@ -10,6 +10,8 @@ import laserSoundEffect from '../assets/sndLaser.wav';
 import explosion from '../assets/sndExplode0.wav';
 import explosion1 from '../assets/sndExplode1.wav'
 
+import ScrollingBackground from '../entities/scrolling_background';
+
 import blastImg1 from '../assets/Ship1_Explosion_001.png';
 import blastImg2 from '../assets/Ship1_Explosion_003.png';
 import blastImg3 from '../assets/Ship1_Explosion_008.png';
@@ -53,7 +55,12 @@ export default class MainScene extends Phaser.Scene {
     }
     
     create() {
-        this.add.image(400, 300, 'background');
+        this.backgrounds = [];
+        for (let i = 0; i < 5; i++) {
+            let bg = new ScrollingBackground(this, "background", i * 10);
+            this.backgrounds.push(bg);
+        }
+
         this.player = new Player(
             this,
             this.game.config.width * 0.5,
@@ -148,6 +155,10 @@ export default class MainScene extends Phaser.Scene {
 
     update() {
 
+        for (let i = 0; i < this.backgrounds.length; i++) {
+            this.backgrounds[i].update();
+        }
+
         if (!this.player.getData("isDead")) {
             this.player.update();
 
@@ -164,6 +175,7 @@ export default class MainScene extends Phaser.Scene {
             }
 
             if (this.keySpace.isDown) {
+                console.log('This is pressed!');
                 this.player.setData("isShooting", true);
             } else {
                 this.player.setData("timerShootTick", this.player.getData("timerShootDelay") - 1);
