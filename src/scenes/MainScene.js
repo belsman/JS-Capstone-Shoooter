@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import backgroundImg from '../assets/space-background.png';
+import backgroundImg from '../assets/space-background1.png';
 import playerShipImg from '../assets/player-ship.png';
 import playerLaserImg from '../assets/sprLaserPlayer.png';
 import enemyShipImg from '../assets/enemy.png';
@@ -96,7 +96,7 @@ export default class MainScene extends Phaser.Scene {
                 { key: 'blast9' },
             ],
             frameRate: 10,
-            repeat: 1
+            repeat: 0
         });    
 
         this.time.addEvent({
