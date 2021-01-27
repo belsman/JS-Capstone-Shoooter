@@ -7,6 +7,17 @@ import enemyLaserImg from '../assets/sprLaserEnemy0.png';
 import Player from '../entities/Player';
 import EnemyShip from '../entities/Enemy';
 
+import blastImg1 from '../assets/Ship1_Explosion_001.png';
+import blastImg2 from '../assets/Ship1_Explosion_003.png';
+import blastImg3 from '../assets/Ship1_Explosion_008.png';
+import blastImg4 from '../assets/Ship1_Explosion_009.png';
+import blastImg5 from '../assets/Ship1_Explosion_012.png';
+import blastImg6 from '../assets/Ship1_Explosion_013.png';
+import blastImg7 from '../assets/Ship1_Explosion_014.png';
+import blastImg8 from '../assets/Ship1_Explosion_017.png';
+import blastImg9 from '../assets/Ship1_Explosion_019.png';
+import blastImg10 from '../assets/Ship1_Explosion_020.png';
+
 export default class MainScene extends Phaser.Scene {
     constructor() {
         super('MainScene');
@@ -20,6 +31,18 @@ export default class MainScene extends Phaser.Scene {
 
         this.load.image('enemy-ship', enemyShipImg);
         this.load.image('enemy-ship-laser', enemyLaserImg);
+
+        this.load.image('blast0', blastImg1);
+        this.load.image('blast1', blastImg2);
+        this.load.image('blast2', blastImg3);
+        this.load.image('blast3', blastImg4);
+        this.load.image('blast4', blastImg5);
+        this.load.image('blast5', blastImg6);
+        this.load.image('blast6', blastImg7);
+        this.load.image('blast7', blastImg8);
+        this.load.image('blast8', blastImg9);
+        this.load.image('blast9', blastImg10);
+
     }
     
     create() {
@@ -34,6 +57,23 @@ export default class MainScene extends Phaser.Scene {
         this.playerLasers = this.add.group();
         this.enemies = this.add.group();
         this.enemyLasers = this.add.group();
+
+        this.anims.create({
+            key: 'enemy-ship-explosion',
+            frames: [
+                { key: 'blast0' },
+                { key: 'blast1' },
+                { key: 'blast2' },
+                { key: 'blast3' },
+                { key: 'blast5' },
+                { key: 'blast6' },
+                { key: 'blast7' },
+                { key: 'blast8' },
+                { key: 'blast9' },
+            ],
+            frameRate: 10,
+            repeat: 1
+        });    
 
         this.time.addEvent({
             delay: 1000,
@@ -59,29 +99,57 @@ export default class MainScene extends Phaser.Scene {
         this.cursors = this.input.keyboard.createCursorKeys();
         this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
-        
+        this.physics.add.collider(this.playerLasers, this.enemies, (playerLaser, enemy) => {
+            if (enemy) {
+                if (enemy.onDestroy !== undefined) {
+                    enemy.onDestroy();
+                }
+
+                enemy.explode(true);
+                playerLaser.destroy();
+            }
+        });
+
+        this.physics.add.overlap(this.player, this.enemies, function(player, enemy) {
+            if (!player.getData("isDead") &&
+                !enemy.getData("isDead")) {
+              player.explode(false);
+              enemy.explode(true);
+            }
+        });
+
+        this.physics.add.overlap(this.player, this.enemyLasers, function(player, laser) {
+            if (!player.getData("isDead") &&
+                !laser.getData("isDead")) {
+              player.explode(false);
+              laser.destroy();
+            }
+        });
     }
 
     update() {
-        this.player.update();
 
-        if (this.cursors.up.isDown) {
-            this.player.moveUp();
-        } else if (this.cursors.down.isDown) {
-            this.player.moveDown();
-        }
+        if (!this.player.getData("isDead")) {
+            this.player.update();
 
-        if (this.cursors.left.isDown) {
-            this.player.moveLeft();
-        } else if (this.cursors.right.isDown) {
-            this.player.moveRight();
-        }
+            if (this.cursors.up.isDown) {
+                this.player.moveUp();
+            } else if (this.cursors.down.isDown) {
+                this.player.moveDown();
+            }
 
-        if (this.keySpace.isDown) {
-            this.player.setData("isShooting", true);
-        } else {
-            this.player.setData("timerShootTick", this.player.getData("timerShootDelay") - 1);
-            this.player.setData("isShooting", false);
+            if (this.cursors.left.isDown) {
+                this.player.moveLeft();
+            } else if (this.cursors.right.isDown) {
+                this.player.moveRight();
+            }
+
+            if (this.keySpace.isDown) {
+                this.player.setData("isShooting", true);
+            } else {
+                this.player.setData("timerShootTick", this.player.getData("timerShootDelay") - 1);
+                this.player.setData("isShooting", false);
+            }
         }
 
         for (const enemy of this.enemies.getChildren()) {

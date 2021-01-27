@@ -19,7 +19,6 @@ export default class Enemy extends Entity {
           callbackScope: this,
           loop: true
       });
-      this.play('enemy-ship-laser');
     }
 
     onDestroy() {
