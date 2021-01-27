@@ -24,6 +24,7 @@ import blastImg10 from '../assets/Ship1_Explosion_020.png';
 export default class MainScene extends Phaser.Scene {
     constructor() {
         super('MainScene');
+        this.score = 0;
     }
 
     preload (){
@@ -59,6 +60,8 @@ export default class MainScene extends Phaser.Scene {
             this.game.config.height * 0.5,
             'player-ship'
         );
+
+        this.scoreText = this.add.text(10, 10, 'score: 0', { fontSize: '20px', fill: '#fff' });
 
         this.sfx = {
             explosions: [
@@ -121,6 +124,8 @@ export default class MainScene extends Phaser.Scene {
 
                 enemy.explode(true);
                 playerLaser.destroy();
+                this.score += 1;
+                this.scoreText.setText('Score: ' + this.score);
             }
         });
 
