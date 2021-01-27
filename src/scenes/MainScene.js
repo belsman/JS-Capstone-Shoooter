@@ -3,7 +3,9 @@ import backgroundImg from '../assets/space-background.png';
 import playerShipImg from '../assets/player-ship.png';
 import playerLaserImg from '../assets/sprLaserPlayer.png';
 import enemyShipImg from '../assets/enemy.png';
+import enemyLaserImg from '../assets/sprLaserEnemy0.png';
 import Player from '../entities/Player';
+import EnemyShip from '../entities/Enemy';
 
 export default class MainScene extends Phaser.Scene {
     constructor() {
@@ -16,7 +18,8 @@ export default class MainScene extends Phaser.Scene {
         this.load.image('player-ship', playerShipImg);
         this.load.image("player-ship-laser", playerLaserImg);
 
-        this.load.image('enemy-ship', enemyShipImg)
+        this.load.image('enemy-ship', enemyShipImg);
+        this.load.image('enemy-ship-laser', enemyLaserImg);
     }
     
     create() {
@@ -29,9 +32,34 @@ export default class MainScene extends Phaser.Scene {
         );
 
         this.playerLasers = this.add.group();
+        this.enemies = this.add.group();
+        this.enemyLasers = this.add.group();
+
+        this.time.addEvent({
+            delay: 1000,
+            callback: function() {
+                let enemy = null;
+        
+                if (Phaser.Math.Between(0, 10) >= 6) {
+                  enemy = new EnemyShip(
+                    this,
+                    Phaser.Math.Between(0, this.game.config.width),
+                    0
+                  );
+                }
+            
+                if (enemy !== null) {
+                  this.enemies.add(enemy);
+                }
+            },
+            callbackScope: this,
+            loop: true
+        });
 
         this.cursors = this.input.keyboard.createCursorKeys();
         this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+
+        
     }
 
     update() {

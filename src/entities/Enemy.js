@@ -1,4 +1,5 @@
 import Entity from './Entity';
+import EnemyLaser from './Enemy-laser';
 
 export default class Enemy extends Entity {
     constructor(scene, x, y) {
@@ -7,7 +8,7 @@ export default class Enemy extends Entity {
       this.shootTimer = this.scene.time.addEvent({
           delay: 1000,
           callback: function() {
-              var laser = new EnemyLaser(
+              let laser = new EnemyLaser(
                   scene,
                   this.x,
                   this.y
@@ -18,7 +19,7 @@ export default class Enemy extends Entity {
           callbackScope: this,
           loop: true
       });
-      this.play("sprEnemy0");
+      this.play('enemy-ship-laser');
     }
 
     onDestroy() {
