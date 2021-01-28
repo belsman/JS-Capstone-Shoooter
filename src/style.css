@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+}
+
+.form-container {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  width: 50%;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+}
+
+.form-container h3 {
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  margin: 5px 0;
+}
+
+button {
+  padding: 7px;
+  color: #000000;
+  background-color: #f1f1f1;
+  border-radius: 4px;
+}

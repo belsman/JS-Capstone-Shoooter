@@ -50,6 +50,8 @@ export default class Player extends Entity {
         this.scene.time.addEvent({ // go to game over scene
             delay: 1000,
             callback: function() {
+              // const scoreObject = { name: '', score: this.scene.score }
+              // saveScore()
               this.scene.score = 0;
               this.scene.scene.start("GameOverScene");
             },

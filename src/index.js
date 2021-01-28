@@ -4,6 +4,7 @@ import PreloaderScene from './scenes/PreloaderScene';
 import MainScene from './scenes/MainScene';
 import GameOverScene from './scenes/GameOverScene';
 import MenuScene from './scenes/MenuScene';
+import './style.css';
 import config from './Config/config';
 
 class Game extends Phaser.Game {
@@ -18,4 +19,27 @@ class Game extends Phaser.Game {
     }
 }
 
-window.game = new Game();
+
+const formStringElement = `
+<div class="form-container">
+    <h3>EL GALACTICO SHOOTING GAME</h3>
+    <form name="playerNameForm">
+        <div>
+            <input type="text" name="player-name" placeholder="Enter player's name" required />
+        </div>
+        <button class="btn">Proceed to Game</button>
+    </form>
+</div>
+`;
+
+document.body.innerHTML = formStringElement;
+
+const { playerNameForm } = document;
+playerNameForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const playerName = e.target.elements['player-name'].value;
+  console.log(playerName);
+  document.body.innerHTML = '';
+  setTimeout(() => window.game = new Game(), 1000);
+});
+
