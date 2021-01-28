@@ -1,19 +1,8 @@
 import 'phaser';
-import sprBtnRestart from '../assets/sprBtnRestart.png';
-import sprBtnRestartHover from '../assets/sprBtnRestartHover.png';
-import sprBtnRestartDown from '../assets/sprBtnRestartDown.png';
-
-
 
 export default class GameScene extends Phaser.Scene {
     constructor () {
         super('GameOverScene');
-    }
-
-    preload () {
-        this.load.image('sprBtnRestart', sprBtnRestart);
-        this.load.image('sprBtnRestartHover', sprBtnRestartHover);
-        this.load.image('sprBtnRestartDown', sprBtnRestartDown);
     }
       
     create () {

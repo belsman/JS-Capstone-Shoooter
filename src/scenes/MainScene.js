@@ -1,57 +1,12 @@
 import Phaser from 'phaser';
-import backgroundImg from '../assets/space-background1.png';
-import playerShipImg from '../assets/player-ship.png';
-import playerLaserImg from '../assets/sprLaserPlayer.png';
-import enemyShipImg from '../assets/enemy.png';
-import enemyLaserImg from '../assets/sprLaserEnemy0.png';
 import Player from '../entities/Player';
 import EnemyShip from '../entities/Enemy';
-import laserSoundEffect from '../assets/sndLaser.wav';
-import explosion from '../assets/sndExplode0.wav';
-import explosion1 from '../assets/sndExplode1.wav'
-
 import ScrollingBackground from '../entities/scrolling_background';
-
-import blastImg1 from '../assets/Ship1_Explosion_001.png';
-import blastImg2 from '../assets/Ship1_Explosion_003.png';
-import blastImg3 from '../assets/Ship1_Explosion_008.png';
-import blastImg4 from '../assets/Ship1_Explosion_009.png';
-import blastImg5 from '../assets/Ship1_Explosion_012.png';
-import blastImg6 from '../assets/Ship1_Explosion_013.png';
-import blastImg7 from '../assets/Ship1_Explosion_014.png';
-import blastImg8 from '../assets/Ship1_Explosion_017.png';
-import blastImg9 from '../assets/Ship1_Explosion_019.png';
-import blastImg10 from '../assets/Ship1_Explosion_020.png';
 
 export default class MainScene extends Phaser.Scene {
     constructor() {
         super('MainScene');
         this.score = 0;
-    }
-
-    preload (){
-        this.load.image('background', backgroundImg);
-
-        this.load.image('player-ship', playerShipImg);
-        this.load.image("player-ship-laser", playerLaserImg);
-
-        this.load.image('enemy-ship', enemyShipImg);
-        this.load.image('enemy-ship-laser', enemyLaserImg);
-
-        this.load.image('blast0', blastImg1);
-        this.load.image('blast1', blastImg2);
-        this.load.image('blast2', blastImg3);
-        this.load.image('blast3', blastImg4);
-        this.load.image('blast4', blastImg5);
-        this.load.image('blast5', blastImg6);
-        this.load.image('blast6', blastImg7);
-        this.load.image('blast7', blastImg8);
-        this.load.image('blast8', blastImg9);
-        this.load.image('blast9', blastImg10);
-
-        this.load.audio("laserSound", laserSoundEffect);
-        this.load.audio("explosion", explosion);
-        this.load.audio("explosion1", explosion1);
     }
     
     create() {
