@@ -15,7 +15,7 @@ export default class ScrollingBackground {
             layer.y = (layer.displayHeight * i);
             let flipX = Phaser.Math.Between(0, 10) >= 5 ? -1 : 1;
             let flipY = Phaser.Math.Between(0, 10) >= 5 ? -1 : 1;
-            layer.setScale(flipX * 3, flipY * 2);
+            layer.setScale(flipX * 4, flipY * 3);
             layer.setDepth(-5 - (i - 1));
             this.scene.physics.world.enableBody(layer, 0);
             layer.body.velocity.y = this.velocityY;

@@ -2,6 +2,9 @@ import Phaser from 'phaser';
 import Player from '../entities/Player';
 import EnemyShip from '../entities/Enemy';
 import ScrollingBackground from '../entities/scrolling_background';
+import frustumCulling from './frustum-culling';
+import hitEnemy from '../handler/hitEnemy';
+import hitPlayer from '../handler/hitPlayer';
 
 export default class MainScene extends Phaser.Scene {
     constructor() {
@@ -78,36 +81,11 @@ export default class MainScene extends Phaser.Scene {
         this.cursors = this.input.keyboard.createCursorKeys();
         this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
-        this.physics.add.collider(this.playerLasers, this.enemies, (playerLaser, enemy) => {
-            if (enemy) {
-                if (enemy.onDestroy !== undefined) {
-                    enemy.onDestroy();
-                }
+        this.physics.add.collider(this.playerLasers, this.enemies, hitEnemy(this));
 
-                enemy.explode(true);
-                playerLaser.destroy();
-                this.score += 1;
-                this.scoreText.setText('Score: ' + this.score);
-            }
-        });
+        this.physics.add.overlap(this.player, this.enemies, hitPlayer);
 
-        this.physics.add.overlap(this.player, this.enemies, function(player, enemy) {
-            if (!player.getData("isDead") &&
-                !enemy.getData("isDead")) {
-              player.explode(false);
-              enemy.explode(true);
-              player.onDestroy();
-            }
-        });
-
-        this.physics.add.overlap(this.player, this.enemyLasers, function(player, laser) {
-            if (!player.getData("isDead") &&
-                !laser.getData("isDead")) {
-              player.explode(false);
-              laser.destroy();
-              player.onDestroy();
-            }
-        });
+        this.physics.add.overlap(this.player, this.enemyLasers, hitPlayer);
     }
 
     update() {
@@ -139,49 +117,8 @@ export default class MainScene extends Phaser.Scene {
             }
         }
 
-        for (const enemy of this.enemies.getChildren()) {
-            enemy.update();
-
-            if (enemy.x < -enemy.displayWidth ||
-                enemy.x > this.game.config.width + enemy.displayWidth ||
-                enemy.y < -enemy.displayHeight * 4 ||
-                enemy.y > this.game.config.height + enemy.displayHeight) {
-            
-                if (enemy) {
-                  if (enemy.onDestroy !== undefined) {
-                    enemy.onDestroy();
-                  }
-            
-                  enemy.destroy();
-                }
-            
-            }
-        }
-
-        for (const laser of this.enemyLasers.getChildren()) {
-            laser.update();
-      
-            if (laser.x < -laser.displayWidth ||
-              laser.x > this.game.config.width + laser.displayWidth ||
-              laser.y < -laser.displayHeight * 4 ||
-              laser.y > this.game.config.height + laser.displayHeight) {
-              if (laser) {
-                laser.destroy();
-              }
-            }
-        }
-      
-        for (const laser of this.playerLasers.getChildren()) {
-            laser.update();
-      
-            if (laser.x < -laser.displayWidth ||
-              laser.x > this.game.config.width + laser.displayWidth ||
-              laser.y < -laser.displayHeight * 4 ||
-              laser.y > this.game.config.height + laser.displayHeight) {
-              if (laser) {
-                laser.destroy();
-              }
-            }
-        }
+        frustumCulling(this.enemies.getChildren(), this);
+        frustumCulling(this.enemyLasers.getChildren(), this);
+        frustumCulling(this.playerLasers.getChildren(), this);
     }
 };
