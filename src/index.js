@@ -1,10 +1,11 @@
 import 'phaser';
+import './style.css';
+import state from './state';
 import BootScene from './scenes/BootScene';
 import PreloaderScene from './scenes/PreloaderScene';
 import MainScene from './scenes/MainScene';
 import GameOverScene from './scenes/GameOverScene';
 import MenuScene from './scenes/MenuScene';
-import './style.css';
 import config from './Config/config';
 
 class Game extends Phaser.Game {
@@ -38,7 +39,7 @@ const { playerNameForm } = document;
 playerNameForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const playerName = e.target.elements['player-name'].value;
-  console.log(playerName);
+  state.user = playerName;
   document.body.innerHTML = '';
   setTimeout(() => window.game = new Game(), 1000);
 });

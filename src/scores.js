@@ -10,10 +10,10 @@ const api = {
   
   };
   
-export default async function postData(data = {}) {
+export default async (data = {}) => {
     const key = 'ze6MTxo6r5QSATkrVLtc';
     const baseUrl = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/';
-    const endPoint = `${baseUrl}games/${key}/scores/`;
+    const endpoint = `${baseUrl}games/${key}/scores/`;
     const response = await fetch(endpoint, {
       method: 'POST',
       mode: 'cors',
@@ -28,13 +28,3 @@ export default async function postData(data = {}) {
     });
     return response.json();
 }
-
-// postData('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/', { "name": "El Galactico" })
-//   .then(data => {
-//     console.log(data);
-// });
-
-// postData(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/, { answer: 42 })
-//   .then(data => {
-//     console.log(data); // JSON data parsed by `data.json()` call
-// });

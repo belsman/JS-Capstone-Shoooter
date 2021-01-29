@@ -1,5 +1,7 @@
 import Entity from './Entity';
 import PlayerLaser from './Player-laser';
+import state from '../state';
+import saveScore from '../scores';
 
 export default class Player extends Entity {
     constructor(scene, x, y, key) {
@@ -50,8 +52,8 @@ export default class Player extends Entity {
         this.scene.time.addEvent({ // go to game over scene
             delay: 1000,
             callback: function() {
-              // const scoreObject = { name: '', score: this.scene.score }
-              // saveScore()
+              state.score = this.scene.score;
+              saveScore(state).then( data => console.log(data));
               this.scene.score = 0;
               this.scene.scene.start("GameOverScene");
             },
