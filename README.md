@@ -2,7 +2,9 @@
 
 # Project: JS-Capstone-Shoooter
 
-> El Galactico is a [Shooter Game](https://en.m.wikipedia.org/wiki/Shooter_game), where the player's space ship aims to destroy enemies' space craft thereby accumulating point while avoiding being hit by the enemy.
+> El Galactico is a Top-Down Space [Shooter Game](https://en.m.wikipedia.org/wiki/Shooter_game), where the player's space ship aims to destroy enemies' space craft thereby accumulating point while avoiding being hit by the enemy.
+
+![screenshot](./screenshot.png)
 
 ## How To Play
 
@@ -16,7 +18,7 @@
 
 ## Live demo
 
-🔗 [visit the page](https://goofy-newton-ffbf77.netlify.app/)
+🔗 [Play El Galactico](https://goofy-newton-ffbf77.netlify.app/)
 
 ## Built With
 
@@ -24,7 +26,7 @@
 - Javascript (ES6)
 - HTML / CSS
 - Webpack
-- J test
+- Jtest
 
 ## Run El Galactico Locally
 
@@ -87,3 +89,7 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 - Microverse for showing the way for this project to happen
+- Credit wubitog and Skorpio ( http://opengameart.org/users/skorpio )
+- [CraftPix.net](https://opengameart.org/users/craftpixnet-2d-game-assets) 2D Game Assets
+- [Create a videogame template](https://phasertutorials.com/creating-a-phaser-3-template-part-1/)
+- [The space shooter game tutorial](https://learn.yorkcs.com/category/tutorials/gamedev/phaser-3/build-a-space-shooter-with-phaser-3/)
