@@ -5,11 +5,10 @@
   "private": true,
   "scripts": {
     "test": "jest",
-    "start": "webpack serve --open",
     "lint": "npm run stylelint && npm run eslint && echo '🎉 All test pass 🎉'",
     "build": "npm run prod",
     "prod": "webpack --mode production",
-    "dev": "webpack --mode development",
+    "dev": "webpack serve --open",
     "watch": "webpack --progress --mode development --watch",
     "stylelint": " npx stylelint \"**/*.{css,scss}\"",
     "eslint": "eslint .",
