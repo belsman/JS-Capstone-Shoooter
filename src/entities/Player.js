@@ -55,7 +55,7 @@ export default class Player extends Entity {
       callback() {
         state.score = this.scene.score;
         if (this.scene.score > 0) {
-          saveScore(state).then(data => console.log(data));
+          saveScore(state).then(data => data);
         }
         this.scene.score = 0;
         this.scene.scene.start('GameOverScene');
