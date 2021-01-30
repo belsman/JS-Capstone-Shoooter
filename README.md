@@ -18,7 +18,7 @@
 
 ## Live demo
 
-🔗 [Play El Galactico](https://goofy-newton-ffbf77.netlify.app/)
+🔗 [Play El Galactico](https://powerful-oasis-60936.herokuapp.com/)
 
 ## Built With
 
@@ -55,7 +55,7 @@ git clone git@github.com:belsman/JS-Capstone-Shoooter.git
 
 3) Run ```cd JS-Capstone-Shoooter``` to enter the main directory
 4) Run ```npm install```
-5) Run ```npm run dev```
+5) Run ```npm run devserver```
 6) Visit `http://localhost:8080` in your browser to play
 7) Happy playing
 `
