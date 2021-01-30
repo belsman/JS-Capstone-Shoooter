@@ -55,10 +55,9 @@ git clone git@github.com:belsman/JS-Capstone-Shoooter.git
 
 3) Run ```cd JS-Capstone-Shoooter``` to enter the main directory
 4) Run ```npm install```
-5) Run ```npm run build```
-6) Run ```npm start```
-8) Visit `http://localhost:8080` in your browser to play
-9) Happy playing
+5) Run ```npm run dev```
+6) Visit `http://localhost:8080` in your browser to play
+7) Happy playing
 `
 
 ## Testing

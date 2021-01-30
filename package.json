@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "private": true,
+  "engines": {
+    "node": "12.14.1"
+  },
   "scripts": {
     "test": "jest",
     "lint": "npm run stylelint && npm run eslint && echo '🎉 All test pass 🎉'",
@@ -24,6 +27,7 @@
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
+    "express": "^4.17.1",
     "file-loader": "^6.2.0",
     "jest": "^26.6.3",
     "style-loader": "^2.0.0",

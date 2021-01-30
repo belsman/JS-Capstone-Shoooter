@@ -50,11 +50,13 @@ export default class Player extends Entity {
   }
 
   onDestroy() {
-    this.scene.time.addEvent({ // go to game over scene
+    this.scene.time.addEvent({
       delay: 1000,
       callback() {
         state.score = this.scene.score;
-        saveScore(state).then(data => data);
+        if (this.scene.score > 0) {
+          saveScore(state).then(data => console.log(data));
+        }
         this.scene.score = 0;
         this.scene.scene.start('GameOverScene');
       },
