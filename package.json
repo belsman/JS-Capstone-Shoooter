@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "jest",
-    "heroku-postbuild": "webpack -p",
+    "heroku-postbuild": "npm run prod",
     "lint": "npm run stylelint && npm run eslint && echo '🎉 All test pass 🎉'",
     "build": "npm run prod",
     "prod": "webpack --mode production",
