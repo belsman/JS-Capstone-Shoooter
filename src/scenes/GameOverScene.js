@@ -24,7 +24,7 @@ export default class GameScene extends Phaser.Scene {
     this.btnRestart.setInteractive();
 
     this.btnRestart.on('pointerover', () => {
-      this.btnRestart.setTexture('sprBtnRestartHover'); // set the button texture to sprBtnPlayHover
+      this.btnRestart.setTexture('sprBtnRestartHover');
     }, this);
 
     this.btnRestart.on('pointerout', () => {
