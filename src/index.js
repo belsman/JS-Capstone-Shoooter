@@ -3,6 +3,7 @@ import './style.css';
 import state from './state';
 import BootScene from './scenes/BootScene';
 import PreloaderScene from './scenes/PreloaderScene';
+import HighscoreScene from './scenes/HighscoreScene';
 import MainScene from './scenes/MainScene';
 import GameOverScene from './scenes/GameOverScene';
 import MenuScene from './scenes/MenuScene';
@@ -14,6 +15,7 @@ class Game extends Phaser.Game {
     super(config);
     this.scene.add('Boot', BootScene);
     this.scene.add('Preloader', PreloaderScene);
+    this.scene.add('HighscoreScene', HighscoreScene);
     this.scene.add('MenuScene', MenuScene);
     this.scene.add('MainScene', MainScene);
     this.scene.add('GameOverScene', GameOverScene);

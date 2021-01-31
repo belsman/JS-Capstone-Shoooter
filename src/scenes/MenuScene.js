@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 
-export default class TitleScene extends Phaser.Scene {
+export default class MenuScene extends Phaser.Scene {
   constructor() {
     super('MenuScene');
   }
@@ -22,6 +22,16 @@ export default class TitleScene extends Phaser.Scene {
 
     this.input.on('pointerout', (event, gameObjects) => {
       gameObjects[0].setTexture('blueButton1');
+    });
+
+    this.highButton = this.add.sprite(100, 200, 'blueButton1').setInteractive();
+    this.centerButton(this.highButton);
+
+    this.highButtonText = this.add.text(0, 0, 'Highscore', { fontSize: '32px', fill: '#fff' });
+    this.centerButtonText(this.highButtonText, this.highButton);
+
+    this.highButton.on('pointerdown', () => {
+      this.scene.start('HighsceneScene');
     });
   }
 
