@@ -1,8 +1,8 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project: JS-Capstone-Shoooter
+# Project: JS-Capstone-Shooter
 
-> El Galactico is a Top-Down Space [Shooter Game](https://en.m.wikipedia.org/wiki/Shooter_game), where the player's space ship aims to destroy enemies' space craft thereby accumulating point while avoiding being hit by the enemy.
+> El Galactico is a Top-Down Space [Shooter Game](https://en.m.wikipedia.org/wiki/Shooter_game), where the player's space ship aims to destroy enemies' spacecraft thereby accumulating point while avoiding being hit by the enemy.
 
 ![screenshot](./screenshot.png)
 
@@ -10,9 +10,9 @@
 
 > Here's how to play El-Galactico
 
-- Use the ```Left```, ```Right```, ```Up```, and ```Down``` arrow ```keys``` to navigate around the scree and dodge enemies' lasers
+- Use the ```Left```, ```Right```, ```Up```, and ```Down``` arrow ```keys``` to navigate around the screen and dodge enemies' lasers
 - Use the ```SPACE KEY``` to shoot lasers
-- Any laser aim at the enemy's space craft destroys the target and scores you a point
+- Any laser aim at the enemy's spacecraft destroys the target and scores you a point
 - Happy playing!
 
 
@@ -34,9 +34,9 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-In order for ```JS-Capstone-Shoooter``` to work locally on your machine, you need these installations:
+For ```JS-Capstone-Shooter``` to work locally on your machine, you need these installations:
 - Nodejs and npm
-- Web Browser that ```<canvas></canvas>``` supports 
+- A Web Browser that has ```<canvas></canvas>``` support
 
 ### Install
 
@@ -53,17 +53,16 @@ or, for SSH:
 git clone git@github.com:belsman/JS-Capstone-Shoooter.git
 ```
 
-3) Run ```cd JS-Capstone-Shoooter``` to enter the main directory
+3) Run ```cd JS-Capstone-Shooter``` to enter the main directory
 4) Run ```npm install```
 5) Run ```npm run devserver```
-6) Visit `http://localhost:8080` in your browser to play
-7) Happy playing
-`
+6) Visit ```http://localhost:8080``` in your browser to play
+7) Happy playing!
 
 ## Testing
 
 1) Open the Terminal
-2) Run ```cd JS-Capstone-Shoooter``` to enter the main directory
+2) Run ```cd JS-Capstone-Shooter``` to enter the main directory
 3) Run ```npm test```
 
 ## Author
@@ -77,7 +76,7 @@ git clone git@github.com:belsman/JS-Capstone-Shoooter.git
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!
+Contributions, issues, and feature requests are welcome!
 
 Feel free to check the [issues page](issues/).
 
