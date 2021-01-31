@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import api from '../scores-api';
 
 export default class Highscore extends Phaser.Scene {
   constructor() {
@@ -23,6 +24,11 @@ export default class Highscore extends Phaser.Scene {
     this.input.on('pointerout', (event, gameObjects) => {
       gameObjects[0].setTexture('blueButton1');
     });
+
+    api.fectchScores().then(scores => {
+       const top5 = scores["result"].sort( (a, b) => b.score - a.score).slice(0, 3);
+       console.log(top5);
+    }).catch(e => e);
   }
 
   centerButton(gameObject, offset = 0) {

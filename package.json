@@ -15,7 +15,7 @@
     "dev": "webpack --mode development",
     "devserver": "webpack serve --open",
     "watch": "webpack --progress --mode development --watch",
-    "stylelint": " npx stylelint \"**/*.{css,scss}\"",
+    "stylelint": "npx stylelint \"**/*.{css,scss}\"",
     "eslint": "eslint .",
     "fix": "stylelint \"**/*.css\" --fix && eslint . --fix"
   },

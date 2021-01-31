@@ -6,7 +6,6 @@ export default (scene) => (playerLaser, enemy) => {
 
     enemy.explode(true);
     playerLaser.destroy();
-    scene.score += 1;
     scene.scoreText.setText(`Score: ${scene.score}`);
   }
 };

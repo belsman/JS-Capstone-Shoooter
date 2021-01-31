@@ -2,7 +2,7 @@ import Phaser from 'phaser';
 import Entity from './Entity';
 import PlayerLaser from './Player-laser';
 import state from '../state';
-import saveScore from '../scores-api';
+import api from '../scores-api';
 
 export default class Player extends Entity {
   constructor(scene, x, y, key) {
@@ -55,7 +55,7 @@ export default class Player extends Entity {
       callback() {
         state.score = this.scene.score;
         if (this.scene.score > 0) {
-          saveScore(state).then(data => data);
+          api.saveScore(state).then(data => data).catch(e => e);
         }
         this.scene.score = 0;
         this.scene.scene.start('GameOverScene');

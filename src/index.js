@@ -9,6 +9,7 @@ import GameOverScene from './scenes/GameOverScene';
 import MenuScene from './scenes/MenuScene';
 import config from './Config/config';
 import formStringElement from './player-name-form';
+import api from './scores-api';
 
 class Game extends Phaser.Game {
   constructor() {
