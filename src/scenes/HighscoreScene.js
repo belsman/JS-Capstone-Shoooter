@@ -25,15 +25,15 @@ export default class Highscore extends Phaser.Scene {
       gameObjects[0].setTexture('blueButton1');
     });
 
-    this.displayName("Top 3 Highscores", 1, 32);
+    this.displayName('Top 3 Highscores', 1, 32);
 
     api.fectchScores().then(scores => {
       const top5 = scores.result.sort((a, b) => b.score - a.score).slice(0, 3);
 
-      top5.forEach( (player, index) => {
-        let textOffset = ((index + 1) * 100);
-        let displayText = `${player.user}\t\t\t${player.score}`;
-        this.displayName(displayText, textOffset, 18); 
+      top5.forEach((player, index) => {
+        const textOffset = ((index + 1) * 100);
+        const displayText = `${player.user}\t\t\t${player.score}`;
+        this.displayName(displayText, textOffset, 18);
       });
     }).catch(e => e);
   }
@@ -56,15 +56,15 @@ export default class Highscore extends Phaser.Scene {
   }
 
   displayName(displayText, offset, fontSize) {
-    let x = this.game.config.width * 0.5;
-    let y = 100 + offset;
+    const x = this.game.config.width * 0.5;
+    const y = 100 + offset;
     this.name = this.add.text(x, y, displayText, {
-        fontFamily: 'monospace',
-        fontSize: fontSize,
-        fontStyle: 'bold',
-        color: '#ffffff',
-        align: 'center',
-      });
+      fontFamily: 'monospace',
+      fontSize,
+      fontStyle: 'bold',
+      color: '#ffffff',
+      align: 'center',
+    });
     this.name.setOrigin(0.5);
   }
 }
