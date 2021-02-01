@@ -22,11 +22,13 @@
 
 ## Built With
 
-- Phaser 3
 - Javascript (ES6)
+- Phaser 3
 - HTML / CSS
 - Webpack
-- Jtest
+- Babel
+- Jest
+- Node / Express
 
 ## Run El Galactico Locally
 
